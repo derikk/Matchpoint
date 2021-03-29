@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # Google OAuth login
+  get 'login', to: redirect('/auth/google'), as: 'login'
+  get 'auth/google/callback' => 'sessions#create'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resource :profile, except: :destroy
 end

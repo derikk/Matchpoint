@@ -1,0 +1,21 @@
+h1 Profile
+
+p
+  | Hi, I'm 
+  b= @profile.name
+  |. I'm in 
+  b #{@profile.grade}th grade
+  |.
+
+p
+  | I'm 
+  b= @profile.gender
+  |  and I want to be matched with 
+  b= @profile.sexuality
+  |.
+
+- if @profile.bio.present?
+  h3 About me
+  p= @profile.bio
+
+= link_to "Edit", edit_profile_path, class: "btn btn-primary"

@@ -6,11 +6,45 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
+    <!--<%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>-->
   </head>
 
   <body>
-    <%= yield %>
+    <header class="d-flex p-3 mb-2 bg-light">
+      <a href="/" class="d-flex align-items-center link-dark text-decoration-none">
+      <svg class="me-2" width="32" height="32" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❣️</text></svg>
+      <span class="fs-4">Matchpoint</span>
+      </a>
+      <div class="d-flex mx-auto justify-content-center py-1">
+        <nav class="nav nav-pills">
+          <a href="#" class="nav-link active rounded-pill">Profile</a>
+          <!--<span class="chevron my-auto ms-2">&gt;</span>-->
+          <a href="/survey" class="nav-link">Survey</a>
+          <a href="/matches" class="nav-link">Matches</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <% if flash[:notice] %>
+        <div class="alert alert-info mt-4" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-warning mt-4" role="alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <% if flash[:success] %>
+        <div class="alert alert-success mt-4" role="alert">
+          <%= flash[:success] %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>

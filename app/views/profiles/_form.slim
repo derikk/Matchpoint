@@ -1,0 +1,47 @@
+= form_with model: @profile, url: profile_path do |form|
+  - if @profile.errors.any?
+    - @profile.errors.each do |error|
+      .alert.alert-warning.mt-2 role="alert"
+        = error.full_message
+
+  .col-md
+    / = form.label :photo, class: "form-label"
+    = form.file_field :photo
+
+
+  .form-floating.col-md
+    = form.text_field :name, placeholder: current_user.name
+    = form.label :name
+
+  .row.gx-2
+    .col-5
+      .form-floating.mt-0
+        = form.select :grade, 9..12
+        = form.label :grade
+
+    .col-7
+      .form-floating.mt-0
+        = form.select :gender, ["Female", "Male", "Non-binary"].zip(Profile.genders.keys)
+        = form.label :gender
+
+  fieldset
+    legend I want to match with:
+
+    .form-check
+      = form.check_box :likes_women
+      = form.label :likes_women, "Women"
+    .form-check
+      = form.check_box :likes_men
+      = form.label :likes_men, "Men"
+    .form-check
+      = form.check_box :likes_nonbinary
+      = form.label :likes_nonbinary, "Non-binary people"
+
+  .form-floating
+    = form.text_area :bio, placeholder: "Write a bit about yourself!"
+    = form.label :bio
+
+
+
+
+  = form.submit "Save changes", class: "btn btn-primary"

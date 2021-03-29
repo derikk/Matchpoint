@@ -1,0 +1,39 @@
+@import "bootstrap";
+
+// button, input[type="submit"] {
+//   @extend .btn;
+// }
+
+.chevron {
+  // padding-right: .5rem;
+  color: #6c757d;
+}
+
+select {
+  @extend .form-select;
+}
+
+input {
+  &[type="text"], &[type="email"], &[type="file"], &[type="number"], &[type="password"] {
+    @extend .form-control;
+  }
+}
+textarea {
+  @extend .form-control;
+  height: 8em !important;
+}
+.form-check {
+  input[type="checkbox"] {
+    @extend .form-check-input;
+  }
+  label {
+    @extend .form-check-label;
+  }
+}
+
+.field_with_errors input {
+  @extend .is-invalid;
+}
+.field_with_errors {
+  display: inline;
+}

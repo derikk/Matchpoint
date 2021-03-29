@@ -16,7 +16,9 @@ ActiveRecord::Schema.define(version: 2021_02_12_210030) do
     t.string "name"
     t.integer "grade"
     t.integer "gender"
-    t.integer "sexuality"
+    t.boolean "likes_women"
+    t.boolean "likes_men"
+    t.boolean "likes_nonbinary"
     t.text "bio"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
