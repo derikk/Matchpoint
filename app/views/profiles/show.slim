@@ -1,6 +1,9 @@
-h1 Profile
+h1.display-1 Profile
 
-p
+- if @profile.photo.attached?
+  = image_tag @profile.photo.variant(resize_to_fill: [400, 400]), size: 200, class: "img-thumbnail rounded-circle mb-3"
+
+p.fs-3
   | Hi, I'm 
   b= @profile.name
   |. I'm in 
@@ -16,6 +19,6 @@ p
 
 - if @profile.bio.present?
   h3 About me
-  p= @profile.bio
+  p= simple_format(@profile.bio)
 
 = link_to "Edit", edit_profile_path, class: "btn btn-primary"

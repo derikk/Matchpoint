@@ -4,12 +4,11 @@
       .alert.alert-warning.mt-2 role="alert"
         = error.full_message
 
-  .col-md
-    / = form.label :photo, class: "form-label"
-    = form.file_field :photo
+  / = form.label :photo, class: "form-label"
+  = form.file_field :photo
 
 
-  .form-floating.col-md
+  .form-floating
     = form.text_field :name, placeholder: current_user.name
     = form.label :name
 
@@ -24,7 +23,7 @@
         = form.select :gender, ["Female", "Male", "Non-binary"].zip(Profile.genders.keys)
         = form.label :gender
 
-  fieldset
+  fieldset.ms-1
     legend I want to match with:
 
     .form-check

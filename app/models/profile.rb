@@ -1,8 +1,11 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  has_one_attached :photo
+  has_one_attached :photo do |attachable|
+    attachable.variant :small, resize: "300x300"
+  end
 
-  validates_presence_of :name, :grade, :gender
+  validates_presence_of :name
+  validates_inclusion_of :grade, in: 9..12, message: "must be between 9 and 12"
   validate :must_like_some_gender
 
   enum gender: %i[female male nonbinary]

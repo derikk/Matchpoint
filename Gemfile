@@ -30,6 +30,8 @@ gem 'slim', '~> 4.0'
 gem 'omniauth-google-oauth2'
 # Accelerate links and forms
 gem 'turbo-rails'
+# Resize and crop uploaded images
+gem 'image_processing', '~> 1.2'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record in development
