@@ -9,7 +9,7 @@
 
 
   .form-floating
-    = form.text_field :name, placeholder: current_user.name
+    = form.text_field :name, required: true, minlength: 2, maxlength: 60, placeholder: current_user.name
     = form.label :name
 
   .row.gx-2
@@ -37,7 +37,7 @@
       = form.label :likes_nonbinary, "Non-binary people"
 
   .form-floating
-    = form.text_area :bio, placeholder: "Write a bit about yourself!"
+    = form.text_area :bio, maxlength: 500, placeholder: "Write a bit about yourself!"
     = form.label :bio
 
 
