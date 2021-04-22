@@ -1,0 +1,14 @@
+h1= Survey
+
+- if @survey.nil?
+  p The survey isn't active yet!
+- else
+  p The current active survey is #{@survey.title}.
+  ol
+    - @survey.questions.each do |question|
+      li
+        = question.question
+        - question.answers.each do |answer|
+          .form-check
+            = radio_button_tag question.id, answer[0], nil, class: "form-check-input"
+            = label_tag String(question.id) + '_' + answer[0], answer[1], class: "form-check-label"

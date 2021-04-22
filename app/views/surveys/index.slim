@@ -1,0 +1,13 @@
+.row
+  .col-sm-6: h1 Surveys
+  .col-sm-6.text-end
+    = link_to "New Survey", new_survey_path, class: "btn btn-primary"
+
+- if @surveys.any?
+  .table-responsive
+    table.table.table-striped
+      = render @surveys
+- else
+  p There aren't any surveys yet. Start writing one!
+
+ 

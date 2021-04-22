@@ -1,0 +1,19 @@
+= form_with model: @survey do |survey_form|
+  - if @survey.errors.any?
+    - @survey.errors.each do |error|
+      .alert.alert-danger.mt-2 role="alert"
+        = error.full_message
+  .form-floating
+    = survey_form.text_field :title, required: true, minlength: 2, maxlength: 60, placeholder: "Valentine's Day 2021"
+    = survey_form.label :title
+  h2 Questions
+  #questions = survey_form.fields_for :questions do |question_form|
+    fieldset.mb-3
+      .form-floating
+        = question_form.text_area :question, placeholder: "Question goes here."
+        = question_form.label :question
+      - Question.choices.keys.each do |answer|
+        = question_form.label answer
+        = question_form.text_field answer
+  = link_to "+ New Question", "javascript:addQuestion()", class: "btn btn-secondary me-2", role: "button"
+  = survey_form.submit "Save", class: "btn btn-primary"

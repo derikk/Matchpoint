@@ -1,0 +1,6 @@
+tr
+  td = link_to survey.title, survey
+  td = link_to "Make active", set_active_survey_path(survey), method: :post
+  td = link_to "Edit", edit_survey_path(survey)
+  td = link_to "Delete", survey, method: :delete, data: { confirm: "Are you sure?" }
+  /.col-2 = time_ago_in_words(survey.updated_at) + " ago"
