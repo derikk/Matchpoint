@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy', as: :logout
 
   # User routes
-  resource :profile, except: :destroy
+  resource :profile, only: [:show, :edit, :update]
   get 'survey', to: 'surveys#active', as: :active_survey
 
   # Admin routes

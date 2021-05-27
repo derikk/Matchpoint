@@ -1,6 +1,7 @@
-# Stores private information from Oauth, not editable by users
+# Record for private information from OAuth; not user-editable
 class User < ApplicationRecord
-  has_one :profile
+  has_one :profile, dependent: :destroy
+  after_create :build_default_profile
 
   validates_presence_of :email, :name, :uid
   validates_uniqueness_of :email, :uid
@@ -12,4 +13,10 @@ class User < ApplicationRecord
       user.uid = auth.uid
     end
   end
+
+  private
+    # Start each user off with an (incomplete) profile
+    def build_default_profile
+      self.build_profile(name: self.name).save(validate: false)
+    end
 end

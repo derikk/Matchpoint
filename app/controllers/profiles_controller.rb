@@ -1,22 +1,15 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_profile, only: [:show, :edit, :update]
-  # before_action :set_profile, only: %i[show edit update]
+  before_action :authenticate_user!, :set_profile
 
-  # GET /profile/new
-  def new
-    @profile = Profile.new
-    @profile.name = current_user.name
+  # GET /profile
+  def show
+    if @profile.invalid?
+      redirect_to edit_profile_url
+    end
   end
 
-  # POST /profile
-  def create
-    @profile = current_user.create_profile(profile_params)
-    if @profile.save
-      redirect_to profile_url, flash: {success: "Profile saved."} # Should it go to the survey instead?
-    else
-      render :new, status: :unprocessable_entity
-    end
+  # GET /profile/edit
+  def edit
   end
 
   # PATCH/PUT /profile
@@ -31,7 +24,7 @@ class ProfilesController < ApplicationController
 
   private
     def set_profile
-      @profile = current_user.profile || (redirect_to new_profile_url)
+      @profile = current_user.profile
     end  
   
     # Only allow a list of trusted parameters through.
