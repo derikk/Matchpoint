@@ -4,9 +4,9 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :grade
       t.integer :gender
-      t.boolean :likes_women
-      t.boolean :likes_men
-      t.boolean :likes_nonbinary
+      t.boolean :likes_women, null: false, default: false
+      t.boolean :likes_men, null: false, default: false
+      t.boolean :likes_nonbinary, null: false, default: false
       t.text :bio
       t.belongs_to :user, null: false, foreign_key: true
 

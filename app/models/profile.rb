@@ -13,16 +13,11 @@ class Profile < ApplicationRecord
 
   def sexuality
     likes = []
-    if likes_women
-      likes << "women"
-    end
-    if likes_men
-      likes << "men"
-    end
-    if likes_nonbinary
-      likes << "non-binary people"
-    end
-    return likes.to_sentence
+    likes << "women" if likes_women
+    likes << "men" if likes_men
+    likes << "non-binary people" if likes_nonbinary
+
+    likes.to_sentence
   end
 
   private

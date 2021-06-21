@@ -3,35 +3,35 @@ class SurveysController < ApplicationController
 
   @@active_survey = nil
 
+  # GET /survey
   def active
     @survey = @@active_survey
-	end
-  
-	def set_active
+  end
+
+  # POST /admin/surveys/1/active
+  def set_active
     @@active_survey = @survey
     redirect_to active_survey_url
-	end
+  end
 
-  # GET /surveys
+  # GET /admin/surveys
   def index
     @surveys = Survey.all
   end
 
-  # GET /surveys/1
-  def show
-  end
+  # GET /admin/surveys/1
+  def show; end
 
-  # GET /surveys/new
+  # GET /admin/surveys/new
   def new
     @survey = Survey.new
     15.times { @survey.questions.build }
   end
 
-  # GET /surveys/1/edit
-  def edit
-  end
+  # GET /admin/surveys/1/edit
+  def edit; end
 
-  # POST /surveys
+  # POST /admin/surveys
   def create
     @survey = Survey.new(survey_params)
     if @survey.save
@@ -41,20 +41,20 @@ class SurveysController < ApplicationController
     end
   end
 
-  # PATCH/PUT /surveys/1
+  # PATCH/PUT /admin/surveys/1
   def update
     if @survey.update(survey_params)
-      redirect_to @survey, flash: {success: "Survey saved."}
+      redirect_to @survey, flash: { success: "Survey saved." }
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /surveys/1
+  # DELETE /admin/surveys/1
   def destroy
     @survey.destroy
     redirect_to surveys_url, notice: "Survey deleted."
-    # redirect_to surveys_url, flash: {success: "Survey deleted."}
+    # redirect_to surveys_url, flash: { success: "Survey deleted." }
   end
 
   private
@@ -65,6 +65,6 @@ class SurveysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def survey_params
-      params.require(:survey).permit(:title, questions_attributes: [:id, :question, :A, :B, :C, :D, :E, :position])
+      params.require(:survey).permit(:title, questions_attributes: %i[id question A B C D E position])
     end
 end

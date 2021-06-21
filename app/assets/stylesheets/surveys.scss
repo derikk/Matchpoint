@@ -1,3 +1,8 @@
-// Place all the styles related to the Surveys controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+#questions {
+  counter-reset: qnum;
+}
+
+.qnum::after {
+  counter-increment: qnum;
+  content: " " counter(qnum);
+}

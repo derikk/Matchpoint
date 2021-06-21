@@ -12,7 +12,7 @@ module Matchpoint
     config.load_defaults 6.1
 
     # Use Slim as templating engine
-    config.generators.template_engine :slim
+    # config.generators.template_engine :slim
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -20,7 +20,7 @@ input {
 }
 textarea {
   @extend .form-control;
-  height: 8em !important;
+  height: auto !important;
 }
 .form-check {
   input[type="checkbox"] {

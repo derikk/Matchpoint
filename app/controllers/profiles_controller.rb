@@ -9,24 +9,22 @@ class ProfilesController < ApplicationController
   end
 
   # GET /profile/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /profile
   def update
     if @profile.update(profile_params)
-      redirect_to profile_url, flash: {success: "Profile saved."}
+      redirect_to profile_url, flash: { success: "Profile saved." }
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-
   private
     def set_profile
       @profile = current_user.profile
-    end  
-  
+    end
+
     # Only allow a list of trusted parameters through.
     def profile_params
       params.require(:profile).permit(:name, :grade, :gender, :likes_women, :likes_men, :likes_nonbinary, :bio, :photo)

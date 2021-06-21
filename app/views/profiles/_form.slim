@@ -1,7 +1,7 @@
 = form_with model: @profile, url: profile_path do |form|
   - if @profile.errors.any?
     - @profile.errors.each do |error|
-      .alert.alert-warning.mt-2 role="alert"
+      .alert.alert-danger.mt-2 role="alert"
         = error.full_message
 
   / = form.label :photo, class: "form-label"
@@ -15,12 +15,13 @@
   .row.gx-2
     .col-5
       .form-floating.mt-0
-        = form.select :grade, 9..12
+        = form.select :grade, 9..12, { prompt: "Choose one…", selected: "", disabled: "" }, required: true
         = form.label :grade
 
     .col-7
       .form-floating.mt-0
-        = form.select :gender, ["Female", "Male", "Non-binary"].zip(Profile.genders.keys)
+        = form.select :gender, ["Female", "Male", "Non-binary"].zip(Profile.genders.keys), 
+          { prompt: "Choose one…", selected: "", disabled: "" }, required: true
         = form.label :gender
 
   fieldset.ms-1
@@ -37,10 +38,8 @@
       = form.label :likes_nonbinary, "Non-binary people"
 
   .form-floating
-    = form.text_area :bio, maxlength: 500, placeholder: "Write a bit about yourself!"
+    = form.text_area :bio, maxlength: 500, rows: 3, placeholder: "Write a bit about yourself!"
     = form.label :bio
 
 
-
-
-  = form.submit "Save changes", class: "btn btn-primary"
+  = form.submit "Save", class: "btn btn-primary"

@@ -10,10 +10,11 @@
   #questions = survey_form.fields_for :questions do |question_form|
     fieldset.mb-3
       .form-floating
-        = question_form.text_area :question, placeholder: "Question goes here."
-        = question_form.label :question
+        = question_form.text_area :question, rows: 3, placeholder: "Question goes here."
+        = question_form.label :question, class: "qnum"
       - Question.choices.keys.each do |answer|
-        = question_form.label answer
-        = question_form.text_field answer
+        .input-group.mb-2
+          span.input-group-text = answer
+          = question_form.text_field answer
   = link_to "+ New Question", "javascript:addQuestion()", class: "btn btn-secondary me-2", role: "button"
   = survey_form.submit "Save", class: "btn btn-primary"

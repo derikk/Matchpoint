@@ -8,6 +8,8 @@
     table.table.table-striped
       = render @surveys
 - else
-  p There aren't any surveys yet. Start writing one!
+  p
+    | There aren't any surveys yet. 
+    = link_to "Start writing one?", new_survey_path
 
  
