@@ -1,6 +1,7 @@
 # Record for private information from OAuth; not user-editable
 class User < ApplicationRecord
   has_one :profile, dependent: :destroy
+  has_many :responses
 
   validates_presence_of :email, :name, :uid
   validates_uniqueness_of :email, :uid

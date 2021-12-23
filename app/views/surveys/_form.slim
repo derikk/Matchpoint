@@ -12,9 +12,13 @@
       .form-floating
         = question_form.text_area :question, rows: 3, placeholder: "Question goes here."
         = question_form.label :question, class: "qnum"
-      - Question.choices.keys.each do |answer|
+      / = question_form.object.answers.each_with_index do |answer, index|
         .input-group.mb-2
           span.input-group-text = answer
-          = question_form.text_field answer
+          / = text_field , name: "answers"
+      - ('A'..'E').each do |answer|
+        .input-group.mb-2
+          span.input-group-text = answer
+          = text_field_tag "survey[questions_attributes][" + String(question_form.index) + "]answers[]"
   = link_to "+ New Question", "javascript:addQuestion()", class: "btn btn-secondary me-2", role: "button"
   = survey_form.submit "Save", class: "btn btn-primary"

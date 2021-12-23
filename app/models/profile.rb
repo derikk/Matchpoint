@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
   validates_length_of :bio, maximum: 500
   validate :acceptable_photo
 
-  enum gender: %i[female male nonbinary]
+  enum gender: %i[female male non-binary]
 
   def sexuality
     likes = []

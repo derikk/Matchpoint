@@ -1,0 +1,6 @@
+= @question.question
+	/ = collection_radio_buttons(:question, :answer, question.answers, )
+	- @question.answers.each_with_index do |answer, index|
+		.form-check
+		= radio_button_tag @question.id, index, nil, class: "form-check-input"
+		= label_tag String(@question.id) + '_' + String(index), answer, class: "form-check-label"

@@ -20,8 +20,8 @@
 
     .col-7
       .form-floating.mt-0
-        = form.select :gender, ["Female", "Male", "Non-binary"].zip(Profile.genders.keys), 
-          { prompt: "Choose one…", selected: "", disabled: "" }, required: true
+        = form.collection_select :gender, Profile.genders.keys, :itself, :capitalize, 
+          {include_blank: "Choose one…"}, required: true
         = form.label :gender
 
   fieldset.ms-1
