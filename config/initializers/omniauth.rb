@@ -4,12 +4,12 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     Rails.application.credentials.google[:CLIENT_ID],
     Rails.application.credentials.google[:CLIENT_SECRET],
     {
-      name: 'google',
+      name: "google",
       # fetch_basic_profile: false,
-      # scope: 'email, profile',
-      # scope: 'userinfo.email',
-      # hosted_domain: 'lexingtonma.org'
-        # hd: 'lexingtonma.org'
+      # scope: "email, profile",
+      # scope: "userinfo.email",
+      # hosted_domain: "lexingtonma.org"
+        # hd: "lexingtonma.org"
     }
   )
 end

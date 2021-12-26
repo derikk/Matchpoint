@@ -4,7 +4,9 @@ one:
   name: MyString
   grade: 1
   gender: 1
-  sexuality: 1
+  likes_women: false
+  likes_men: false
+  likes_nonbinary: false
   bio: MyText
   user: one
 
@@ -12,6 +14,8 @@ two:
   name: MyString
   grade: 1
   gender: 1
-  sexuality: 1
+  likes_women: false
+  likes_men: false
+  likes_nonbinary: false
   bio: MyText
   user: two
