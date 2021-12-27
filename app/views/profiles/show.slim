@@ -1,7 +1,7 @@
 h1.display-1 Profile
 
 - if @profile.photo.attached?
-  = image_tag @profile.photo.variant(resize_to_fill: [400, 400]), size: 200, class: "img-thumbnail rounded-circle mb-3"
+  = image_tag @profile.photo.variant(:medium), size: 200, class: "img-thumbnail rounded-circle mb-3"
 
 p.fs-3
   | Hi, I'm 

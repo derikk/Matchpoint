@@ -1,6 +1,9 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  has_one_attached :photo
+  has_one_attached :photo do |image|
+    image.variant  :thumb, resize_to_fill: [100, 100]
+    image.variant :medium, resize_to_fill: [400, 400]
+  end
 
   validates_presence_of :name
   validates :name, length: 2..60, allow_blank: true  # So a blank name gets only one error
